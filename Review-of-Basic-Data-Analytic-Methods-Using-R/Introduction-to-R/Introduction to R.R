@@ -36,3 +36,9 @@ sales_table <- read.table("yearly_sales.csv",header = TRUE,sep = ",")
 #View(sales_table)
 sales_delim <- read.delim("yearly_sales.csv",sep = ",")
 #View(sales_delim)
+#read.table and read.delim are intended to import other common file types such as .TXT
+sales_table_txt <- read.table("yearly_sales.txt",header = TRUE,sep = ",")
+#View(sales_table_txt)
+sales_delim_txt <- read.delim("yearly_sales.txt",sep = ",")
+#View(sales_delim_txt)
+
