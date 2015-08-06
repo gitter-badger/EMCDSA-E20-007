@@ -18,3 +18,21 @@ attributes(results)
 #plot histogram of the residuals
 hist(results$residuals,breaks = 800)
 #########R Graphical User Interfaces##############
+?lm #for help on the function
+help(lm) #for help on the function
+# x <- 563
+# edit(name = x) # editor open up; we can change a copy of that value or edit with assign into another object called y just like change 563 to y=563645, then if you return y same value displayed
+# x
+# fix(x) #fix function directly change the value of x on the editor itself if we made modifications
+# x
+# #y  # we can un comment after if using y in the above editor as copy variable
+# x
+# save.image()
+#############Data Import and Export###############
+sales <- read.csv("yearly_sales.csv")
+#View(sales)
+#read.table and read.delim are intended to import other common file types such as .TXT, these also can use to import .CSV files as follow
+sales_table <- read.table("yearly_sales.csv",header = TRUE,sep = ",")
+#View(sales_table)
+sales_delim <- read.delim("yearly_sales.csv",sep = ",")
+#View(sales_delim)
