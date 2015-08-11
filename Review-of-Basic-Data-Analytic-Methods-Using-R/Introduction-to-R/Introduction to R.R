@@ -57,3 +57,10 @@ sales_delim_txt <- read.delim("yearly_sales.txt",sep = ",")
 # sales_delim3_txt <- read.delim2("yearly_sales.txt",sep = ",")
 # View(sales_delim3_txt)
 
+#data exporting using write.table(), write.csv(), write.csv2()
+#add a column for the average sales per order
+sales$per_order <- sales$sales_total/sales$num_of_orders
+write.table(sales,"sales_modified.txt",sep = "\t",row.names = FALSE)
+write.table(sales,"yearly_sales.csv",sep = "\t",row.names = TRUE)
+yearly_sales_exported_data <- read.csv("yearly_sales.csv")
+View(yearly_sales_exported_data)
