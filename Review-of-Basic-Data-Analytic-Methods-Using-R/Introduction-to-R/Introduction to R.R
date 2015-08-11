@@ -41,4 +41,18 @@ sales_table_txt <- read.table("yearly_sales.txt",header = TRUE,sep = ",")
 #View(sales_table_txt)
 sales_delim_txt <- read.delim("yearly_sales.txt",sep = ",")
 #View(sales_delim_txt)
+#The main difference between these import functions is the default values
+# read.delim() expects the column separator to be a ("\t") 
+#in the event that the numberic data in a data file uses a comma for the decimal
+#Below are the default arguements for the functions
+# Function	          Header 	   Separator	   Decimal Point
+# read.table()	      FALSE	     ""	           "."
+# read.csv()	        TRUE	     ","	         "."
+# read.csv2()	        TRUE	     ";"	         ","
+# read.delim()	      TRUE	     "\t"	         "."
+# read.delim2()	      TRUE	     "\t"	         ","
+sales_delim2_txt <- read.delim2("yearly_sales_tab_delimited.txt",sep = ",")
+View(sales_delim2_txt)
 
+sales_delim3_txt <- read.delim2("yearly_sales.txt",sep = ",")
+View(sales_delim3_txt)
