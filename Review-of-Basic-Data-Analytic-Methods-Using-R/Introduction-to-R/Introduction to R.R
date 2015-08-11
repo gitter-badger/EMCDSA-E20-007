@@ -28,7 +28,7 @@ help(lm) #for help on the function
 # #y  # we can un comment after if using y in the above editor as copy variable
 # x
 # save.image()
-#############Data Import and Export###############
+######Data Import and Export###############
 sales <- read.csv("yearly_sales.csv")
 #View(sales)
 #read.table and read.delim are intended to import other common file types such as .TXT, these also can use to import .CSV files as follow
@@ -57,10 +57,40 @@ sales_delim_txt <- read.delim("yearly_sales.txt",sep = ",")
 # sales_delim3_txt <- read.delim2("yearly_sales.txt",sep = ",")
 # View(sales_delim3_txt)
 
-#data exporting using write.table(), write.csv(), write.csv2()
+##########data exporting using write.table(), write.csv(), write.csv2()############
 #add a column for the average sales per order
 sales$per_order <- sales$sales_total/sales$num_of_orders
+#export data as tab delimited with out the row names
 write.table(sales,"sales_modified.txt",sep = "\t",row.names = FALSE)
-write.table(sales,"yearly_sales.csv",sep = "\t",row.names = TRUE)
+# write.table(sales,"yearly_sales.csv",sep = "\t",row.names = TRUE)
 yearly_sales_exported_data <- read.csv("yearly_sales.csv")
-View(yearly_sales_exported_data)
+#to write modified values into same table as last column
+write.csv(sales,"yearly_sales.csv")
+########read data from #DBMS (MySQL, Oracle, SQL server, PostgreSQL), usefull packages are DBI and RODBC  
+#install.packages("RODBC")
+#library(RODBC) #loads the package inot the R workspace
+#conn <- odbcConnect("training2",uid = "user",pwd = "password")
+#the connector needs to be present to submit a SQL query to an ODBC database
+#by using a sqlQuery() function from RODBC package
+#following is to retreives specific columns from housing table , for household 
+#income (hinc) is greater than  $1,000,000
+#housing_data <- sqlQuery(conn, "select seriano, state, persons, rooms from housing where hinc>1000000")
+#head(housing_data)
+#######more information on export and import found on below link and how to import datasets from
+#statistical software packages including Minitab, SAS,SPSS########
+#https://cran.r-project.org/doc/manuals/r-release/R-data.html
+########plots can also be saved using R code ###########
+# save file as jpg
+jpeg(filename = "sales_hist.jpeg")
+hist(sales$num_of_orders)
+dev.off()
+# save file as png
+png(filename="sales_hist.png") 
+hist(sales$num_of_orders, breaks=50)
+dev.off()
+# save file as PDF
+pdf(file = "sales_hist.pdf") # here filename argument doesn't exist in pdf function
+hist(sales$num_of_orders, breaks=25)
+dev.off()
+
+###########Attribute and Data Types##########
