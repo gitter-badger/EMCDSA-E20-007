@@ -51,8 +51,9 @@ sales_delim_txt <- read.delim("yearly_sales.txt",sep = ",")
 # read.csv2()	        TRUE	     ";"	         ","
 # read.delim()	      TRUE	     "\t"	         "."
 # read.delim2()	      TRUE	     "\t"	         ","
-sales_delim2_txt <- read.delim2("yearly_sales_tab_delimited.txt",sep = ",")
-View(sales_delim2_txt)
+# sales_delim2_txt <- read.delim2("yearly_sales_tab_delimited.txt",sep = ",")
+# View(sales_delim2_txt)
+# 
+# sales_delim3_txt <- read.delim2("yearly_sales.txt",sep = ",")
+# View(sales_delim3_txt)
 
-sales_delim3_txt <- read.delim2("yearly_sales.txt",sep = ",")
-View(sales_delim3_txt)
