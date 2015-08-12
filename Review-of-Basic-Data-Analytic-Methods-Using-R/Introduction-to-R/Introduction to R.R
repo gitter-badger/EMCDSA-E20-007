@@ -95,4 +95,30 @@ hist(sales$num_of_orders, breaks=25)
 dev.off()
 
 ###########Attribute and Data Types##########
-  
+#Numeric, character and Logical data types
+i <- 1                #creates a numeric variable
+sport <- "football"   #creates a character variable 
+flag <- TRUE          #creates a logical variable 
+
+#class() represents the abstract class of an object
+# The class of a variable is a "high level" classification, and it captures psychologically 
+#(or statistically) meaningful distinctions. For instance "2011-09-12" and "my birthday" are both text strings,
+# but there's an important difference between the two: one of them is a date. So it would be nice
+# if we could get R to recognise that "2011-09-12" is a date, and allow us to do things like add or
+# subtract from it. The class of a variable is what R uses to keep track of things like that. Because
+# the class of a variable is critical for determining what R can or can't do with it, the class() function
+# is very handy
+
+#typeof() determines the way an object is sotred in memory
+#The type of a variable is a very low level classification.
+#this is where you can see the distinction between integer data,
+# double precision numeric, etc. 
+
+#mode() refers to the format of the information that the variable stores
+#It tells you whether R has stored text data or numeric data
+#It can be useful to know about, but it's not the main thing we care about. 
+
+
+
+
+
