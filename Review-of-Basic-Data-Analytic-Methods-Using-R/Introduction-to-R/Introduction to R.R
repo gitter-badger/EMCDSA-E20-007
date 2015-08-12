@@ -66,7 +66,8 @@ write.table(sales,"sales_modified.txt",sep = "\t",row.names = FALSE)
 yearly_sales_exported_data <- read.csv("yearly_sales.csv")
 #to write modified values into same table as last column
 write.csv(sales,"yearly_sales.csv")
-########read data from #DBMS (MySQL, Oracle, SQL server, PostgreSQL), usefull packages are DBI and RODBC  
+########read data from #DBMS (MySQL, Oracle, SQL server, PostgreSQL), 
+#usefull packages are DBI and RODBC  
 #install.packages("RODBC")
 #library(RODBC) #loads the package inot the R workspace
 #conn <- odbcConnect("training2",uid = "user",pwd = "password")
@@ -94,3 +95,4 @@ hist(sales$num_of_orders, breaks=25)
 dev.off()
 
 ###########Attribute and Data Types##########
+  
