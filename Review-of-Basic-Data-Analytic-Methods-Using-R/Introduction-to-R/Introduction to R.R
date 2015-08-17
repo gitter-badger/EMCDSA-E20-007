@@ -155,4 +155,44 @@ a <- 1:10
 length(a)
 length(sport) #returns 1 (not 8 for "football") 
 
+######## Vectors ###################
 
+#vector can be tested by is.vector() function
+is.vector(i)
+is.vector(flag)
+is.vector(sport)
+#a vector can be created using c() function or the colon operator :
+u <- c("red", "yellow", "blue")
+u
+u[1]
+v <- 1:5
+v
+sum(v)
+w <- v*2
+w
+w[3]
+z <- v + w
+z
+# below code explains how z vector logical comparisons can be built to extract certain elements of a given vector  
+z > 8 # returns FALSE FALSE  TRUE  TRUE  TRUE
+z[z > 8] #returns 9 12 15
+z[z > 8 | z <5 ]  #returns 3  9 12 15
+#sometimes it is necessary to initialize a vector of a specific lenghth and then populate
+#the content of the vector later. the vector() function, by default creates a logical
+#vector 
+a <- vector(length = 3) #creates a logical vector of length 3
+a #returns FALSE FALSE FALSE
+b <- vector(mode = "numeric", 3)
+b #returns 0 0 0
+typeof(b) #returns "double"
+b[2] <- 3.1
+b #returns 0.0 3.1 0.0
+c <- vector(mode = "integer", 0) #create an integer vector of length 0
+c #returns integer(0)
+length(c)  #returns 0
+# although vectors may appear to be analogous to arrays
+#of one dimension, they are technically dimensionless, as
+#seen in the following R code. the concept of arrays and matrces
+#is adressed in the following discussion
+length(b) #returns 3
+dim(b) #returns NULL (an undefined value)
