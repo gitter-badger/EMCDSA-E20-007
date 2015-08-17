@@ -117,8 +117,42 @@ flag <- TRUE          #creates a logical variable
 #mode() refers to the format of the information that the variable stores
 #It tells you whether R has stored text data or numeric data
 #It can be useful to know about, but it's not the main thing we care about. 
+i <- 12.36
 
+class(i)
+typeof(i)
+mode(i)
 
+class(sport)
+typeof(sport)
+mode(sport)
 
+class(flag)
+typeof(flag)
+mode(flag)
+
+is.integer(i)
+j <- as.integer(i)
+class(j)
+typeof(j)
+mode(j)
+
+i <- 1+0i
+class(i)
+
+#test whether variable is an integer or not
+is.integer(i)
+#returns FALSE
+#coerce i into a new integer variable j using as.integer()
+j <- as.integer(i)
+is.integer(j)
+#returns TRUE
+
+#length() function reveals that the created variables each have a lenghth 1
+length(i) #returns 1
+length(flag) #returns 1
+a <- 1:10
+length(a)
+length(sport) #returns 1 (not 8 for "football") 
 
 
