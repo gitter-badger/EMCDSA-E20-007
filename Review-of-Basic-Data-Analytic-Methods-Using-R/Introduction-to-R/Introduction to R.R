@@ -196,3 +196,67 @@ length(c)  #returns 0
 #is adressed in the following discussion
 length(b) #returns 3
 dim(b) #returns NULL (an undefined value)
+
+version # checkout for R version new version R i386 3.2.2 installed
+
+# a small experiment how it works if we added number to logical vector
+a <- vector(length = 3) #creates a logical vector of length 3
+a #returns FALSE FALSE FALSE
+a[2] <- 3.1
+a # returns 0.0 3.1 0.0
+
+############Arrays and Mattices ####################
+
+# Array() function can be used to restructure a vector as an array.
+#here 3 dimensional array to hold the quarterly sales for three regions over a two-year period
+#and then assign the sales amount of $158,000 to the second region for the first quarter of the first year
+
+quarterly_sales <- array(0,dim = c(3,4,2))
+quarterly_sales[2,1,1] <- 158000
+quarterly_sales
+quarterly_sales[, , 1]
+quarterly_sales[, , 2] 
+
+#normal creation of array
+a <- 1:20
+dim(a) <- c(4,5) # assign dimentions as 4 rows and 5 columns
+a
+#using array function with series of values
+a <- array(1:20,dim = c(4,5))
+a
+#using array function with single value repetition (recycle)
+a <- array(0,dim = 4:5)
+a
+#give direct total values in a vector and dimension
+i <- array(c(1,2,1,2),dim = c(2,2))
+i
+a[i]
+a <- array(1:20,dim = c(4,5))
+a
+a[i]
+########## array manipulations ###########
+#let's say
+a
+b <- a
+b
+#multiplication
+c<-a*b
+#addition
+a+b
+#subtract
+b-a
+#transpose a matrix
+a
+b
+b <- t(a)
+b
+a
+#diagonal matrix of a
+diag(a)
+#eigenvalues of matrix
+#eigen(a) #error: bcz its not a square matrix
+
+#so for that we are making as square by taking dim as 4x4
+a <- array(1:20, dim = c(4,4))
+a
+eigen(a)
