@@ -77,9 +77,7 @@ write.csv(sales,"yearly_sales.csv")
 #income (hinc) is greater than  $1,000,000
 #housing_data <- sqlQuery(conn, "select seriano, state, persons, rooms from housing where hinc>1000000")
 #head(housing_data)
-#######more information on export and import found on below link and how to import datasets from
-#statistical software packages including Minitab, SAS,SPSS########
-#https://cran.r-project.org/doc/manuals/r-release/R-data.html
+#######more information on export and import found on below link and how to import datasets from statistical software packages including Minitab, SAS,SPSS# #https://cran.r-project.org/doc/manuals/r-release/R-data.html ######
 ########plots can also be saved using R code ###########
 # save file as jpg
 jpeg(filename = "sales_hist.jpeg")
@@ -260,3 +258,30 @@ diag(a)
 a <- array(1:20, dim = c(4,4))
 a
 eigen(a)
+##### Matrices ############
+# A two dimensional array is known as matrix. the following code initializes a matrix to hold the quarterly
+#sales for the three regions, nrw and ncol are the parameters of rows and columns respectevly for the 
+#sales_matrix
+sales_matrix <- matrix(0, nrow = 3,ncol = 4)
+sales_matrix
+
+# (or)
+
+sales_matrix <- matrix(1:12, nrow = 3,ncol = 4) 
+sales_matrix
+
+# R provides the standard matrix operations sucha as additions, subtraction, multiplication
+#as well as transpose function t() and the inverse matrix function matrix.inverse() included
+#in the matrixcalc package. The following R code builds 3X3 matrix, M, and multiplies it by
+#its inverse to obtain the identity matrix
+install.packages("matrixcalc")
+library(matrixcalc)
+M <- matrix(c(1,3,3,5,0,4,3,3,3), nrow = 3, ncol = 3) #build a 3X3 matrix
+M
+matrix.inverse(M)
+M * matrix.inverse(M)
+M %*% matrix.inverse(M)
+
+
+
+
