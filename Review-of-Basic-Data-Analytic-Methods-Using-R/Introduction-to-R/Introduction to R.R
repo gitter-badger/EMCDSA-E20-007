@@ -282,6 +282,110 @@ matrix.inverse(M)
 M * matrix.inverse(M)
 M %*% matrix.inverse(M)
 
+############## Data Frames ######################
+
+is.data.frame(sales)
+#checkout whether each variable of the data frame with $ notation is a vector or not
+is.vector(sales$cust_id)
+is.vector(sales$sales_total)
+is.vector(sales$gender) #returns false bcz its a factor by default
+is.factor(sales$gender) #returns TRUE
+
+#bcZ of their flexibility to handle many data types, data frames
+# are preferred input format for many of the modeling functions
+#available in R
+
+#str() function provides the structure of the sales data frame
+#its nothing but identifies the data type of the variable
+#the factor variable and levels
+#as well as the first few values
+sales <- read.csv("yearly_sales.csv")
+str(sales)
+#in the simplest sense, data frames are list of variables of the same length
+#a subset of data frame can be retrieved through subsetting operator
+#R's subsetting operators are powerful in that they allow
+#one to allow complex operations in succint fashion, and easily 
+#retrieve a subset of dataset
+
+#extracting the fourth column of the sales data frame
+sales[,4]
+#extracting the gender column of the sales data frame
+sales$gender
+sales[4,] #extracting the 4th row
+sales[3,]#extracting the 3rd row
+#retrive the first two rows of the data frame
+sales[1:2,]
+#retrieve the first, third, and fourth columns
+sales[,c(1,3,4)]
+#retrieve both the cust_id and sales_total columns
+sales[,c("cust_id","sales_total")]
+#retrieve all the records whose gender is female
+sales[sales$gender=="F",]
+
+#the following R code shows that the class of the sales variable
+#is a dataframe, however the typeof variable is a list
+#list is a collection of objects that can be various types,
+#including other lists
+class(sales)
+typeof(sales)  
+####### Lists ##########
+# Lists can be any type of objects including other lists
+#build an assorted list of a string, a numeric, a list, a vector, and a matrix
+housing <- list("own","rent")
+assortment <- list("football", 7.5, housing,v, M)
 
 
 
+
+
+####### Factors  ###############
+# Factors is nothing but like gender variable (F/M)
+#Factors can be ordered or not ordered
+#in the case of gender those are not ordered
+
+class(sales$gender) #returns Factor
+is.ordered(sales$gender) #returns False
+
+#in ggplot2 there is a data frame diamonds contains 3 ordered factors
+#example Cut factor there are five levels in cut: Fair,Good,Very Good, Premium, and ideal
+#sales$gender is a nominal data, but diamond$cut conatains ordinal data
+head(sales$gender) #displays first six values and the levels
+#install.packages("ggplot2")  #error will come while using package if you install like this
+#install.packages("ggplot2", repos=c("http://rstudio.org/_packages", "http://cran.rstudio.com"))
+#library(ggplot2) #error will come while using package if you install like this
+# if any error comes with above code then follow below instal the package
+#called "stringi"
+install.packages("ggplot2", repos="http://cran.rstudio.com/", dependencies=TRUE)
+library(ggplot2)
+install.packages("stringi")
+library(ggplot2) # then now it works for the package ggplot2
+
+data(diamonds) #load the data frame into the R workspace
+str(diamonds)
+head(diamonds$cu)  #it will work even if we leave last letter for cut
+View(diamonds)
+head(diamonds$col)  #it will work even if we leave last letter for columns
+str(diamonds)
+head(diamonds$cut) #displays the first six values and the levels
+#suppose it is decided to categorize sales$sales_totals into 3 groups
+#small, medium and big
+
+#build an empty character vector of the same length as sales
+sales_group <- vector(mode = "character", length = length(sales$sales_total))
+#group the customers according to the sales amount
+sales_group[sales$sales_total<100] <- "smalll"
+sales_group[sales$sales_total>=100 & sales$ales_total<500] <- "medium"
+sales_group[sales$sales_total>=500] <- "big"
+
+#create and add the ordered factor to the sales data frame
+spender <- factor(sales_group, levels = c("small","medium","big"), ordered = TRUE)
+spender <- na.omit(spender)
+sales <- na.omit(sales)
+sales <- cbind(sales,spender)
+str(sales$spender)
+head(sales$spender)
+
+#the cbind() function is used to combine variable column-wise
+#the rbind() function is used to combine dataset row-wise
+#the use of factors is important in several R statistical modeling functions
+#such as analysis of variance aov()
