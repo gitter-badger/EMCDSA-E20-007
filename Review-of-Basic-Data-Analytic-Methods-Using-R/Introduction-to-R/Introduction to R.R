@@ -379,8 +379,8 @@ sales_group[sales$sales_total>=500] <- "big"
 
 #create and add the ordered factor to the sales data frame
 spender <- factor(sales_group, levels = c("small","medium","big"), ordered = TRUE)
-spender <- na.omit(spender)
-sales <- na.omit(sales)
+
+
 sales <- cbind(sales,spender)
 str(sales$spender)
 head(sales$spender)
@@ -389,3 +389,54 @@ head(sales$spender)
 #the rbind() function is used to combine dataset row-wise
 #the use of factors is important in several R statistical modeling functions
 #such as analysis of variance aov()
+########### Contingencey tables    #################
+
+#in R table means class of objects used to store the observed
+#counts across the factors for a given dataset that is called
+#Contingencey table
+
+#below is the contingency table based on the sales$gender
+#and sales$spender factors
+
+sales_table <- table(sales$gender,sales$spender)
+sales_table
+
+class(sales_table) #returns table
+typeof(sales_table) #returns integer
+dim(sales_table) #returns 2,3
+
+#perform a chi-squared test
+summary(sales_table)
+
+############### Descriptive Statistics ##############
+sales <- read.csv("yearly_sales.csv") 
+summary(sales)
+
+# to simplify the function calls, assign
+x <- sales$sales_total
+y <- sales$num_of_orders
+
+cor(x,y)
+cov(x,y)
+IQR(x)  # the difference between third and first quartile
+mean(x)
+median(x)
+range(x)
+sd(x)
+var(x)
+ 
+#apply() is useful when the same function is to be applied to
+#several variables in a data frame
+# there are also lapply() and sapply() 
+
+############ user defined functions ###########
+
+#build a function to provide the differnce between the
+#maximum and the minimum values
+my_range  <- function(v) {range(v)[2]-range(v)[1]}
+my_range(x)
+
+  
+
+ls()
+
